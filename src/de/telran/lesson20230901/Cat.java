@@ -1,10 +1,9 @@
 package de.telran.lesson20230901;
 
-public class Cat {
+import de.telran.lesson20230908.Animal;
+import de.telran.lesson20230908.Playable;
 
-    protected int age;
-    private String name;
-    private boolean isHungry;
+public class Cat extends Animal {
 
 //    private Kitten kitten = new Kitten();
 
@@ -15,31 +14,9 @@ public class Cat {
         System.out.println("Total cat count: " + catCount);
     }
 
-    public Cat(int catAge, String catName){
+    public Cat(String catName, int catAge){
+        super(catName, catAge);
         catCount++;
-        age = catAge;
-        name = catName;
-        isHungry = true;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public boolean isHungry() {
-        return isHungry;
-    }
-
-    private void incrementAge(){
-        age++;
-    }
-
-    public void feed(){
-        isHungry = false;
     }
 
     public Kitten createKitten(){
@@ -48,14 +25,38 @@ public class Cat {
         return kitten;
     }
 
-    public class Kitten {
+    @Override
+    public void sayHello() {
+        System.out.println("Meow!");
+    }
+
+    @Override
+    public void play(Playable playable) {
+        System.out.println("Cat plays with " + playable);
+    }
+
+    public class Kitten extends Animal {
         private String kittenName;
 
         public String getParentName(){
-            return name;
+            return super.getName();
+        }
+
+        @Override
+        public void sayHello() {
+            System.out.println("Meow!");
+        }
+
+        @Override
+        public void play(Playable playable) {
+            System.out.println("Kitten plays with " + playable);
         }
     }
 
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
 
 

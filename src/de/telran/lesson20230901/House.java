@@ -6,8 +6,8 @@ public class House {
     public static void main(String[] args) {
         Cat.printCatCount();
 
-        Cat cat1 = new Cat(3, "Vasua");
-        Cat cat2 = new Cat(1, "Tom");
+        Cat cat1 = new Cat( "Vasua", 3);
+        Cat cat2 = new Cat( "Tom", 1);
 
         System.out.println(cat1.isHungry());
         cat1.feed();
@@ -19,7 +19,7 @@ public class House {
 
         Cat.printCatCount();
 
-        System.out.println("cat1 age: " + cat1.age); // possible to reach protected var
+        System.out.println("cat1 age: " + cat1.getAge());
 
         Cat.Kitten kitten1 = cat1.new Kitten();
         Cat.Kitten kitten2 = cat1.createKitten();
