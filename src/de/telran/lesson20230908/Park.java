@@ -29,6 +29,13 @@ public class Park {
 //        Playable[] arrayOfGamers = {human, cat, dog};
 //        allPlay(arrayOfGamers);
         allPlayWithVarArg(human, cat, dog, robot);
+
+
+
+        Playable.method();
+//        human.method();
+//        Playable.defaultMethod();
+        human.defaultMethod();
     }
 
     public static void allPlay(Playable[] playables) {

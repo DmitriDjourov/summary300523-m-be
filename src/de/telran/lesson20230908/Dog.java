@@ -1,5 +1,7 @@
 package de.telran.lesson20230908;
 
+import java.util.Objects;
+
 public class Dog extends Animal {
 
     private String color;
@@ -29,5 +31,22 @@ public class Dog extends Animal {
     @Override
     public void play(Playable playable) {
         System.out.println("Dog plays with " + playable);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Dog dog = (Dog) o;
+
+        if (!this.getName().equals(dog.getName()) || this.getAge() != dog.getAge() || this.isHungry() != dog.isHungry()) return false;
+
+        return Objects.equals(color, dog.color);
+    }
+
+    @Override
+    public int hashCode() {
+        return color != null ? color.hashCode() : 0;
     }
 }
