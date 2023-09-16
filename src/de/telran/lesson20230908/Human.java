@@ -1,5 +1,7 @@
 package de.telran.lesson20230908;
 
+import java.util.Objects;
+
 public class Human implements Playable {
 
     private String name;
@@ -28,9 +30,6 @@ public class Human implements Playable {
 //        if (another.getClass().equals(Human.class)) {
         if (another instanceof Human) {
             Human anotherHuman = (Human) another;
-//            double x = 1.4;
-//            int y = (int) x;
-
             boolean nameCondition = (this.name == null && anotherHuman.name == null)
                     || (this.name != null) && this.name.equals(anotherHuman.name);
             boolean dogCondition = (this.dog == null && anotherHuman.dog == null)
@@ -41,5 +40,11 @@ public class Human implements Playable {
         return false;
     }
 
-
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + age;
+        result = 31 * result + (dog != null ? dog.hashCode() : 0);
+        return result;
+    }
 }

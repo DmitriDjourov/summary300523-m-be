@@ -32,7 +32,7 @@ public class Park {
 
 
 
-        Playable.method();
+        Playable.staticMethod();
 //        human.method();
 //        Playable.defaultMethod();
         human.defaultMethod();

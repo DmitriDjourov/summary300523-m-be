@@ -2,15 +2,14 @@ package de.telran.lesson20230908;
 
 public interface Playable {
 
-    public static final int number = 10;
-    int n2 = 10;
+    int number = 10; // public static final
 
     void play();
 
     void play(Playable playable);
 
 
-    static void method() {
+    static void staticMethod() {
 //        this.play();
         System.out.println("Static method " + number);
     }
