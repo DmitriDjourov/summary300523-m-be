@@ -3,6 +3,7 @@ package de.telran.lesson20230922;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 public class IteratorExamples {
 
@@ -31,6 +32,34 @@ public class IteratorExamples {
         for (String s : names) {
             System.out.println(s);
         }
+
+        List<Integer> integers = new ArrayList<>();
+        integers.add(100);
+        integers.add(200);
+        integers.add(300);
+        integers.add(400);
+        integers.add(500);
+        integers.add(300);
+        integers.add(300);
+
+        ListIterator<Integer> listIterator = integers.listIterator();
+        while (listIterator.hasNext()){
+            Integer next = listIterator.next();
+            if (next == 300) {
+                listIterator.previous();
+                listIterator.previous();
+                listIterator.set(3000);
+                listIterator.next();
+                listIterator.next();
+//                break;
+            }
+        }
+
+        for (Integer i : integers) {
+            System.out.println(i);
+        }
+
+
 
 
     }
