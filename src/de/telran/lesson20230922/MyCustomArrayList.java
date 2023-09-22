@@ -1,6 +1,7 @@
 package de.telran.lesson20230922;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class MyCustomArrayList implements Iterable<String>{
 
@@ -13,14 +14,20 @@ public class MyCustomArrayList implements Iterable<String>{
     @Override
     public Iterator<String> iterator() {
         return new Iterator<String>() {
+
+            int current = data.length - 1;
+
             @Override
             public boolean hasNext() {
-                return false; // TODO
+                return current >= 0;
             }
 
             @Override
             public String next() {
-                return null; // TODO
+                if (!hasNext()){
+                    throw new NoSuchElementException("Cannot invoke next()");
+                }
+                return data[current--];
             }
         };
     }

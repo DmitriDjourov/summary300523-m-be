@@ -1,5 +1,7 @@
 package de.telran.lesson20230922;
 
+import java.util.Iterator;
+
 public class UseMyCustomArrayList {
 
     public static void main(String[] args) {
@@ -10,8 +12,11 @@ public class UseMyCustomArrayList {
             System.out.println(data);
         }
 
-
-
+        Iterator<String> iterator = list.iterator();
+        iterator.next();
+        iterator.next();
+        iterator.next();
+        iterator.next();
     }
 
 
