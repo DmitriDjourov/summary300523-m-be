@@ -6,6 +6,7 @@ public class Monkey implements Comparable<Monkey> {
     private int age;
     private String colour;
     private boolean isHungry;
+    private double weight;
 
     public Monkey(String name, int age, String colour, boolean isHungry) {
         this.name = name;

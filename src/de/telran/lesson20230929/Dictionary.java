@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Dictionary {
 
+    // Task: Составить словарь используемых слов с частотой их употребления
     public static void main(String[] args) {
 
         String text = "Mr. and Mrs. Dursley, of number four, Privet Drive, were proud to say\n" + "that they were " +
