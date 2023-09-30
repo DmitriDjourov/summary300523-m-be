@@ -41,7 +41,8 @@ public class SetAndMapExamples {
             System.out.println(e.getKey() + " " + e.getValue());
         }
 
-        Set<String> animals = new TreeSet<>();
+        Comparator<String> reversed = Comparator.reverseOrder();
+        Set<String> animals = new TreeSet<>(reversed);
         animals.add("monkey");
         animals.add("cat");
         animals.add("dove");
