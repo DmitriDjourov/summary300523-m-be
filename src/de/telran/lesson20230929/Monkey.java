@@ -59,6 +59,13 @@ public class Monkey implements Comparable<Monkey> {
                 '}';
     }
 
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
 
 //    @Override
 //    public int compareTo(Monkey another) {

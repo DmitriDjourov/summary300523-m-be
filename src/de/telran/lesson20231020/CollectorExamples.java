@@ -10,8 +10,8 @@ public class CollectorExamples {
     public static void main(String[] args) {
         List<String> names = Arrays.asList("Tom", "Mary", "Jane", "Edward", "Mary", "Tom");
 
-//        List<String> list = names.stream().filter(s -> s.length() == 4).toList(); - Unmodifieble
-//        List<String> list = names.stream().filter(s -> s.length() == 4).collect(Collectors.toList()); // - Arraylist
+//        List<String> list = names.stream().filter(s -> s.length() == 4).toList(); - unmodifiable list
+//        List<String> list = names.stream().filter(s -> s.length() == 4).collect(Collectors.toList()); // - ArrayList
         List<String> list = names.stream().filter(s -> s.length() == 4).collect(Collectors.toCollection(LinkedList::new));
         System.out.println(list.getClass());
         list.add("Vasua");
@@ -38,9 +38,5 @@ public class CollectorExamples {
         System.out.println(groupByNameLength);
 
     }
-
-
-
-
 
 }
