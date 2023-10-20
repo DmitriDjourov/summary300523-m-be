@@ -8,11 +8,12 @@ public class Monkey implements Comparable<Monkey> {
     private boolean isHungry;
     private double weight;
 
-    public Monkey(String name, int age, String colour, boolean isHungry) {
+    public Monkey(String name, int age, String colour, boolean isHungry, double weight) {
         this.name = name;
         this.age = age;
         this.colour = colour;
         this.isHungry = isHungry;
+        this.weight = weight;
     }
 
     public String getName() {
