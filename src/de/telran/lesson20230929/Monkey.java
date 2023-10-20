@@ -50,8 +50,15 @@ public class Monkey implements Comparable<Monkey> {
 
     @Override
     public String toString() {
-        return "Monkey{" + "name='" + name + '\'' + ", age=" + age + ", colour='" + colour + '\'' + ", isHungry=" + isHungry + '}';
+        return "Monkey{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", colour='" + colour + '\'' +
+                ", isHungry=" + isHungry +
+                ", weight=" + weight +
+                '}';
     }
+
 
 //    @Override
 //    public int compareTo(Monkey another) {

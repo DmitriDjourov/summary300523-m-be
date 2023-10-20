@@ -27,7 +27,7 @@ public class CollectorExamples {
         Map<String, Boolean> namesStartWithT = names.stream().collect(Collectors.toMap(name -> name, name -> name.startsWith("T"), (x, y) -> x));
         System.out.println(namesStartWithT);
 
-        // Map<number of letters, number of names>
+        // Map<Integer, Integer>  число букв / число имен с данным числом букв
         Map<Integer, Integer> lettersCount = names.stream().collect(Collectors.toMap(String::length, name -> 1, Integer::sum));
         Map<Integer, Long> lettersCount2 = names.stream().collect(Collectors.groupingBy(String::length, Collectors.counting()));
         System.out.println(lettersCount);
@@ -36,9 +36,6 @@ public class CollectorExamples {
         // Map<Integer, List<String>>  число букв / список имен с данным числом букв
         Map<Integer, List<String>> groupByNameLength = names.stream().collect(Collectors.groupingBy(String::length, Collectors.toList()));
         System.out.println(groupByNameLength);
-
-
-
 
     }
 
