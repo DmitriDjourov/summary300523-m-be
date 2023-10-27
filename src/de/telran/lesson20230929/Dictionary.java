@@ -1,6 +1,7 @@
 package de.telran.lesson20230929;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Dictionary {
 
@@ -13,22 +14,26 @@ public class Dictionary {
         String[] words = text.split("\\W");
         System.out.println(Arrays.toString(words));
 
-        Map<String, Integer> dictionary = new TreeMap<>();
-        for (int i = 0; i < words.length; i++) {
-            String key = words[i];
-            if (dictionary.containsKey(key)) {
-                Integer count = dictionary.get(key);
-                dictionary.put(key, ++count);
-            } else {
-                dictionary.put(key, 1);
-            }
-        }
+//        Map<String, Integer> dictionary = new TreeMap<>();
+//        for (int i = 0; i < words.length; i++) {
+//            String key = words[i];
+//            if (dictionary.containsKey(key)) {
+//                Integer count = dictionary.get(key);
+//                dictionary.put(key, ++count);
+//            } else {
+//                dictionary.put(key, 1);
+//            }
+//        }
+        Map<String, Long> dictionary = Arrays.stream(words).collect(Collectors.groupingBy(o -> o, Collectors.counting()));
 
-        Set<Word> wordSet = new TreeSet<>();
-        for (Map.Entry<String, Integer> e : dictionary.entrySet()) {
-            Word word = new Word(e.getKey(), e.getValue());
-            wordSet.add(word);
-        }
+//        Set<Word> wordSet = new TreeSet<>();
+//        for (Map.Entry<String, Long> e : dictionary.entrySet()) {
+//            Word word = new Word(e.getKey(), e.getValue());
+//            wordSet.add(word);
+//        }
+
+        Set<Word> wordSet = dictionary.entrySet().stream()
+                .map(entry -> new Word(entry.getKey(), entry.getValue())).collect(Collectors.toCollection(TreeSet::new));
 
         for (Word w : wordSet) {
             System.out.println(w);
@@ -39,16 +44,16 @@ public class Dictionary {
 
     public static class Word implements Comparable<Word>{
         String word;
-        int count;
+        long count;
 
-        public Word(String word, int count) {
+        public Word(String word, long count) {
             this.word = word;
             this.count = count;
         }
 
         @Override
         public int compareTo(Word o) {
-            int result = o.count - this.count; // count
+            int result = (int) (o.count - this.count); // count
             if (result != 0) return result;
 
             result = this.word.compareTo(o.word); // word
