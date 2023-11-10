@@ -25,17 +25,44 @@ public class GenericExamples {
 
 
         // PECS = Producer Extends Consumer Super
+
+        // PECS = Producer Extends
         List<BMW> bmws = new ArrayList<>();
+        List<Volwo> volwos = new ArrayList<>();
+        List<Car> cars = new ArrayList<>();
+        List<WhiteBMW> whiteBMWs = new ArrayList<>();
+
+        List<? extends Car> carsInShop = bmws;
+        carsInShop = volwos;
+        carsInShop = cars;
+        carsInShop = whiteBMWs;
+
+//        carsInShop.add(new BMW());
+//        carsInShop.add(new Volwo());
+//        carsInShop.add(new Car());
+
+        Car car = carsInShop.get(0); // Producer
 
 
+        // Consumer Super
+        List<? super Car> carsOnTheParking = new ArrayList<>();
+        carsOnTheParking.add(new Car()); // Consumer
+        carsOnTheParking.add(new BMW());
+        carsOnTheParking.add(new Volwo());
+//        carsOnTheParking.add(new Object());
 
+        Object o = carsOnTheParking.get(0);
 
+        List<? super BMW> carsList = new ArrayList<>();
+        carsList = new ArrayList<BMW>();
+        carsList = new ArrayList<Car>();
+        carsList = new ArrayList<Object>();
+//        carsList = new ArrayList<Volwo>();
+//        carsList = new ArrayList<WhiteBMW>();
 
-
-
-
-
-
+        carsList.add(new BMW());
+        carsList.add(new WhiteBMW());
+//        carsList.add(new Car());
     }
 
     public static void processNumber(List<? extends Number> data) {
