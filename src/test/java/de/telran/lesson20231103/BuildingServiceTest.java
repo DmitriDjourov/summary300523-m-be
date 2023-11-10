@@ -16,6 +16,8 @@ public class BuildingServiceTest {
     private static BuildingService service;
 
     private static List<Building> testBuildings;
+
+//    @Mock
     private static BuildingRepository repository = Mockito.mock(BuildingRepository.class);
 
     @BeforeEach
@@ -50,5 +52,6 @@ public class BuildingServiceTest {
     public void deleteFarm() {
         service.deleteFarm();
         Mockito.verify(repository).deleteByName("Farm");
+//        Mockito.verify(repository).deleteByName(Mockito.any());
     }
 }
