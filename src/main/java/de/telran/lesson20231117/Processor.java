@@ -2,6 +2,7 @@ package de.telran.lesson20231117;
 
 import java.util.UUID;
 
+//@Deprecated
 public class Processor {
 
     public int count = 0;
@@ -13,6 +14,7 @@ public class Processor {
         this.id = id;
     }
 
+    @Deprecated
     public void process(int data){
         System.out.println("Processing " + data);
     }

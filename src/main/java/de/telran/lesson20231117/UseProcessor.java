@@ -26,16 +26,16 @@ public class UseProcessor {
             Field idField = aClass.getDeclaredField("id");
             idField.setAccessible(true);
             System.out.println("id = " + idField.get(processor));
-
-
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException | NoSuchFieldException e) {
             e.printStackTrace();
         }
 
         try {
+//            @SuppressWarnings("deprecation")
+//            Processor processor1 = aClass.newInstance();
             Processor newInstance = aClass.getConstructor(String.class).newInstance("123");
         } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
 
         try {
