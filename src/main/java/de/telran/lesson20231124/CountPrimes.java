@@ -1,7 +1,5 @@
 package de.telran.lesson20231124;
 
-import de.telran.lesson20231110.Car;
-
 import java.util.concurrent.*;
 
 public class CountPrimes {
@@ -10,21 +8,22 @@ public class CountPrimes {
         System.out.println(Thread.currentThread().getName());
         System.out.println(Thread.currentThread());
 
+        // Последовательные вычисления
 //        int count1 = getCount(2, 33_000);
 //        int count2 = getCount(33_000, 66_000);
 //        int count3 = getCount(66_000, 100_000);
+//        System.out.println("Total numbers of primes: " + (count1 + count2 + count3));
 
-        Task task1 = new Task(2, 33_0000);
-        Task task2 = new Task(33_0000, 66_0000);
-        Task task3 = new Task(66_0000, 100_0000);
+        // Параллельные вычисления с помощью потоков
+        Task task1 = new Task(2, 33_000);
+        Task task2 = new Task(33_000, 66_000);
+        Task task3 = new Task(66_000, 100_000);
         Thread thread1 = new Thread(task1);
         Thread thread2 = new Thread(task2);
         Thread thread3 = new Thread(task3);
         thread1.start();
         thread2.start();
         thread3.start();
-//        int count3 = getCount(66_000, 100_000);
-
 
         try {
             thread1.join();
@@ -36,14 +35,15 @@ public class CountPrimes {
             e.printStackTrace();
         }
 
+        // Параллельные вычисления с помощью экзекуторов
 //        ExecutorService executorService = Executors.newFixedThreadPool(4);
-        System.out.println(Runtime.getRuntime().availableProcessors());
+        System.out.println("Available Processors: " + Runtime.getRuntime().availableProcessors());
         ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() / 2);
-        Future<Integer> future1 = executorService.submit(new TaskForExecutor(2, 33_0000));
-        Future<Integer> future2 = executorService.submit(new TaskForExecutor(33_0000, 66_0000));
-        Future<Integer> future3 = executorService.submit(new TaskForExecutor(66_0000, 100_0000));
+        Future<Integer> future1 = executorService.submit(new TaskForExecutor(2, 33_000));
+        Future<Integer> future2 = executorService.submit(new TaskForExecutor(33_000, 66_000));
+        Future<Integer> future3 = executorService.submit(new TaskForExecutor(66_000, 100_000));
 
-        // some other logic
+        // some other logic in main thread ...
 
         try {
             System.out.println("Total numbers of primes with FixedThreadPool: "
@@ -73,7 +73,6 @@ public class CountPrimes {
     }
 
     static class Task implements Runnable {
-
         int count = 0;
         int start;
         int end;
