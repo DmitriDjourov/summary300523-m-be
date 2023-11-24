@@ -14,9 +14,9 @@ public class CountPrimes {
 //        int count2 = getCount(33_000, 66_000);
 //        int count3 = getCount(66_000, 100_000);
 
-        Task task1 = new Task(2, 33_000);
-        Task task2 = new Task(33_000, 66_000);
-        Task task3 = new Task(66_000, 100_000);
+        Task task1 = new Task(2, 33_0000);
+        Task task2 = new Task(33_0000, 66_0000);
+        Task task3 = new Task(66_0000, 100_0000);
         Thread thread1 = new Thread(task1);
         Thread thread2 = new Thread(task2);
         Thread thread3 = new Thread(task3);
@@ -36,13 +36,12 @@ public class CountPrimes {
             e.printStackTrace();
         }
 
-
 //        ExecutorService executorService = Executors.newFixedThreadPool(4);
         System.out.println(Runtime.getRuntime().availableProcessors());
         ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() / 2);
-        Future<Integer> future1 = executorService.submit(new TaskForExecutor(2, 33_000));
-        Future<Integer> future2 = executorService.submit(new TaskForExecutor(33_000, 66_000));
-        Future<Integer> future3 = executorService.submit(new TaskForExecutor(66_000, 100_000));
+        Future<Integer> future1 = executorService.submit(new TaskForExecutor(2, 33_0000));
+        Future<Integer> future2 = executorService.submit(new TaskForExecutor(33_0000, 66_0000));
+        Future<Integer> future3 = executorService.submit(new TaskForExecutor(66_0000, 100_0000));
 
         // some other logic
 
