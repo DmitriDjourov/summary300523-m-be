@@ -36,9 +36,10 @@ public class CountPrimes {
         }
 
         // Параллельные вычисления с помощью экзекуторов
-//        ExecutorService executorService = Executors.newFixedThreadPool(4);
         System.out.println("Available Processors: " + Runtime.getRuntime().availableProcessors());
-        ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() / 2);
+//        ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() / 2);
+//        ExecutorService executorService = Executors.newFixedThreadPool(4);
+        ExecutorService executorService = Executors.newCachedThreadPool();
         Future<Integer> future1 = executorService.submit(new TaskForExecutor(2, 33_000));
         Future<Integer> future2 = executorService.submit(new TaskForExecutor(33_000, 66_000));
         Future<Integer> future3 = executorService.submit(new TaskForExecutor(66_000, 100_000));
@@ -46,7 +47,7 @@ public class CountPrimes {
         // some other logic in main thread ...
 
         try {
-            System.out.println("Total numbers of primes with FixedThreadPool: "
+            System.out.println("Total numbers of primes with CachedThreadPool: "
                     + (future1.get() + future2.get() + future3.get()));
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
